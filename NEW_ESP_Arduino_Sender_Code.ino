@@ -26,6 +26,7 @@ else
 #include <PortExpander_I2C.h> //Port Expander code
 #include<EEPROM.h>
 #include "Wire.h"
+#include<SoftwareSerial.h>
 
 ///////////////NOTE: LED +ve connected to Vcc, LED -ve connected to PCF pin
 
@@ -37,11 +38,14 @@ int pushButton_F_up=5;   //Fan_Speed Up   // Digital pin 5 of arduino
 int pushButton_F_down=6; //Fan_Speed Down // Digital pin 5 of arduino
 int Fan_Speed;           // Stores the current fan speed
 
+SoftwareSerial receiver(10,11); 
  
 void setup()
 {
  //EEPROM.write(3,0);  // intialising the fan speed to zero
- Serial.begin(115200); 
+ Serial.begin(57600); 
+ receiver.begin(57600);
+ 
  Wire.begin();
  pinMode(pushButton_L1,INPUT);
  pinMode(pushButton_L2,INPUT);
@@ -69,11 +73,12 @@ void loop()
   
   String stat="";
   
-if(Serial.available())
+if(receiver.available())
 {
-  if(Serial.find("L1"))
+  if(receiver.find("L1"))
   {
     Serial.print("String found");
+    EEPROM.write(0,LOW);
   }
   /*
   while (1)
