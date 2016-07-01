@@ -75,10 +75,23 @@ void loop()
   
 if(receiver.available())
 {
-  if(receiver.find("L1"))
+  if(receiver.find("L1="))
+  {
+    Serial.print("String1found");
+    while(!receiver.available());
+    Serial.print("available");
+  char L1=receiver.read(); 
+ Serial.print(L1); 
+  if(L1=='0')
   {
     Serial.print("String found");
     EEPROM.write(0,LOW);
+  }
+  if(L1=='1')
+  {
+    Serial.print("String found");
+    EEPROM.write(0,HIGH);
+  }
   }
   /*
   while (1)
@@ -115,12 +128,14 @@ if(buttonState_L1==1)                           // if switch is pressed then che
    pe.digitalWrite(0,HIGH);
    EEPROM.write(0,L1^1);
    Serial.print("L1=0");
+   receiver.print("L1=0");
   }
   else                                          // if data in EEPROM is HIGH ie Led is off then turn on the led  
   {
    pe.digitalWrite(0,LOW);
    EEPROM.write(0,L1^1);
    Serial.print("L1=1");
+   receiver.print("L1=1");
   }
   //Serial.println("Exited if statement");
 }
@@ -142,12 +157,14 @@ if(buttonState_L2==1)                            // if switch is pressed then ch
    pe.digitalWrite(1,HIGH);
    EEPROM.write(1,L2^1);
    Serial.print("L2=0");
+   receiver.print("L2=0");
   }
   else                                           // if data in EEPROM is HIGH ie Led is off then turn on the led  
   {
    pe.digitalWrite(1,LOW);
    EEPROM.write(1,L2^1);
    Serial.print("L2=1");
+   receiver.print("L2=1");
   }
 }
 while(digitalRead(pushButton_L2)==1);
@@ -168,12 +185,14 @@ if(buttonState_F1==1)                            // if switch is pressed then ch
    pe.digitalWrite(2,HIGH);
    EEPROM.write(2,F1^1);
    Serial.print("F1=0");
+   receiver.print("F1=0");
   }
   else                                           // if data in EEPROM is HIGH ie Led is off then turn on the led  
   {
    pe.digitalWrite(2,LOW);
    EEPROM.write(2,F1^1);
    Serial.print("F1=1");
+   receiver.print("F1=1");
   }
 }
 while(digitalRead(pushButton_F1)==1);
@@ -195,9 +214,12 @@ if(buttonState_F_up==1 && Fan_Speed<8)                            // if switch i
   //Serial.print("Increased Fan Speed is =");
   //Serial.print("F_up is=");
   Serial.print("Fs=");
-   
-  Serial.print(Fan_Speed+1);
-  EEPROM.write(3,Fan_Speed+1);                                     // write the increased value in EEPROM
+  Fan_Speed=Fan_Speed+1;
+  Serial.print(Fan_Speed);
+  
+  receiver.print("Fs=");
+  receiver.print(Fan_Speed);
+  EEPROM.write(3,Fan_Speed);                                     // write the increased value in EEPROM
   
   pe.digitalWrite(3,LOW);                                          //Toggle led when switch is pressed
   delay(1000);
@@ -214,9 +236,12 @@ if(buttonState_F_down==1 && Fan_Speed>0)                            // if switch
   //Serial.print("Decreased Fan Speed is ="); 
  // Serial.print("F_down is=");
   Serial.print("Fs=");
-
-  Serial.print(Fan_Speed-1);
-  EEPROM.write(3,Fan_Speed-1); 
+  Fan_Speed=Fan_Speed-1;
+  Serial.print(Fan_Speed);
+  
+  receiver.print("Fs=");
+  receiver.print(Fan_Speed);
+  EEPROM.write(3,Fan_Speed);
  
   pe.digitalWrite(4,LOW);
   delay(1000);
