@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="homeautomation.circularblue.com.homeautomation.Config_activity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="16dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="103dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="50dp"
+                android:padding="10dp"
+                android:src="@drawable/router"/>
+
+            <ImageView
+                android:layout_width="55dp"
+                android:padding="10dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/plus"/>
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="107dp"
+                android:padding="10dp"
+                android:src="@drawable/server_2" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/new_device_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button"
+            android:textColor="@android:color/white"
+            android:text="Add New Device" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="103dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="50dp"
+                android:padding="10dp"
+                android:src="@drawable/router"/>
+
+            <ImageView
+                android:layout_width="55dp"
+                android:padding="10dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/success"/>
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="100dp"
+                android:layout_height="107dp"
+                android:padding="10dp"
+                android:src="@drawable/server_2" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/existing_device_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:textColor="@android:color/white"
+            android:text="Add Existing Device" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
