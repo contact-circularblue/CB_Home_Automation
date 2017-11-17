@@ -55,7 +55,7 @@ public class Splash extends AppCompatActivity {
                 if(singleton.hasHubInPrefs()){
                     singleton.setHub(singleton.getHubIdFromPrefs());
                     SocketEvents.ADD_DEVICE();
-                }else {
+                }else{
                     Intent intent = new Intent(Splash.this, Config_activity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);

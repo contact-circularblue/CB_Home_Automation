@@ -52,7 +52,11 @@
             android:name=".select_esp_dialog"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Dialog" />
-        <activity android:name=".ConnectToESP_Dialog"></activity>
+        <activity android:name=".ConnectToESP_Dialog" />
+        <activity
+            android:name=".hubs"
+            android:label="@string/title_activity_hubs"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
     </application>
 
 </manifest>
